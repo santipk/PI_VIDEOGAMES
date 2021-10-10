@@ -12,3 +12,11 @@
     gap: 10px;
     text-decoration: none;
 }
+.options{
+    border: solid rgba(50, 47, 255, 0.513);
+    background-color: rgb(0, 0, 0, 0.3); 
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px rgb(6, 44, 255);
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 6px rgb(212, 175, 55); 
+}

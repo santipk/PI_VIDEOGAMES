@@ -5,7 +5,7 @@ import getGenres from "../../actions/getGenres";
 import { getGenresDB } from "../../actions/actions";
 import { useSelector, useDispatch } from "react-redux";
 import { postVideoGame } from "../../actions/actions";
-
+import "./AddGame.css"
 
 export default function VideogameCreate(){
     const dispatch = useDispatch()
@@ -25,7 +25,7 @@ export default function VideogameCreate(){
         getGenres().then(data =>{
             dispatch(getGenresDB(data))
         })
-    })
+    }, [dispatch])
 
     
 
@@ -80,18 +80,24 @@ export default function VideogameCreate(){
 
     function handlersubmit(e){
         e.preventDefault()
+        if (input.genresId.length === 0){
+            alert("the game require almost 1 genre")
+        }else if(input.platforms.length === 0 ){
+            alert("the game require almost 1 platform")
+        }else {
+            dispatch( postVideoGame(input) )
+            alert("game created")
+            setInput({
+                genresId: [] ,
+                name: "",
+                description: "" ,
+                releaseDate: "",
+                rating: "",
+                platforms: [] ,
+            })
+            history.push("/home")
+        }
         
-        dispatch( postVideoGame(input) )
-        alert("game created")
-        setInput({
-            genresId: [] ,
-            name: "",
-            description: "" ,
-            releaseDate: "",
-            rating: "",
-            platforms: [] ,
-        })
-        history.push("/home")
     }
 
     
@@ -100,7 +106,7 @@ export default function VideogameCreate(){
     return(
         <div>
             <Link to = "/home"><button> volver</button></Link>
-            <form onSubmit= {e =>{handlersubmit(e)}}>
+            <form className="form" onSubmit= {e =>{handlersubmit(e)}}>
                 <div>
                     <label >Name: </label>
                     <input onChange={e=>{handelchange(e)}} required type="text" value ={input.name} name="name" />
@@ -122,52 +128,61 @@ export default function VideogameCreate(){
                     <label>Rating: (0.0 - 5.0) </label>
                     <input onChange={e=>{handelchange(e)}} type="number" placeholder="2.5"   min="0.0" max="5" step="0.1" name="rating" />
                 </div>
-                <div><label>genres: </label>{
-                    genres.map(e=>{
-                        return(
-                            <div>
-                                <label>{e.name}:</label>
-                                <input key={e.id} type="checkbox" name={e.name} value={e.id} onChange={e=>{handlecheck(e)}} />
-                            </div>
-                        )})
-                }
-                
+                <div className="box" > 
+                    <div>
+                        <label>genres: </label>
+                    </div>
+                    <div className="genres">
+                        {
+                        genres.map(e=>{
+                            return(
+                                <div className="tag" >
+                                    <label>{e.name}:</label>
+                                    <input key={e.id} type="checkbox" name={e.name} value={e.id} onChange={e=>{handlecheck(e)}} />
+                                </div>
+                            )})
+                    }
+                    </div>
+                </div>
+                <div className="box" >
                     <label>platforms: </label>
-                    <div>
-                        <label>pc</label>
-                        <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="pc" value="pc" />
+                    <div className="platform"  >
+                        <div className="tag" >
+                            <label>pc</label>
+                            <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="pc" value="pc" />
+                        </div>
+                        <div className="tag" >
+                            <label>PlayStation 5</label>
+                            <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="PlayStation 5" value="PlayStation 5" />
+                        </div>
+                        <div className="tag" >
+                            <label>PlayStation 4</label>
+                            <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="PlayStation 4" value="PlayStation 4" />
+                        </div>
+                        <div className="tag" >
+                            <label>PlayStation 3</label>
+                            <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="PlayStation 3" value="PlayStation 3" />
+                        </div>
+                        <div className="tag" >
+                            <label>Xbox 360</label>
+                            <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="Xbox 360" value="Xbox 360" />
+                        </div>
+                        <div className="tag" >
+                            <label>Xbox One</label>
+                            <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="Xbox One" value="Xbox One" />
+                        </div>
+                        <div className="tag" >
+                            <label>Xbox Series S/X</label>
+                            <input onChange={e=>{handlerPlatforms(e) }}  type="checkbox" name="Xbox Series S/X" value="Xbox Series S/X" />
+                        </div>
+                        <div className="tag" >
+                            <label>Nintendo Switch</label>
+                            <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="Nintendo Switch" value="Nintendo Switch" />
+                        </div>
                     </div>
-                    <div>
-                        <label>PlayStation 5</label>
-                        <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="PlayStation 5" value="PlayStation 5" />
-                    </div>
-                    <div>
-                        <label>PlayStation 4</label>
-                        <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="PlayStation 4" value="PlayStation 4" />
-                    </div>
-                    <div>
-                        <label>PlayStation 3</label>
-                        <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="PlayStation 3" value="PlayStation 3" />
-                    </div>
-                    <div>
-                        <label>Xbox 360</label>
-                        <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="Xbox 360" value="Xbox 360" />
-                    </div>
-                    <div>
-                        <label>Xbox One</label>
-                        <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="Xbox One" value="Xbox One" />
-                    </div>
-                    <div>
-                        <label>Xbox Series S/X</label>
-                        <input onChange={e=>{handlerPlatforms(e) }}  type="checkbox" name="Xbox Series S/X" value="Xbox Series S/X" />
-                    </div>
-                    <div>
-                        <label>Nintendo Switch</label>
-                        <input onChange={e=>{handlerPlatforms(e) }} type="checkbox" name="Nintendo Switch" value="Nintendo Switch" />
-                    </div>
-
+                </div>
+                <div>
                     <button  type="submit" >Create Game</button>
-                    
                 </div>
             </form>
             

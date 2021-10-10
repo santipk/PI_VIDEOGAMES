@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { detailsid } from "../../actions/actions";
 import details from "../../actions/details";
 import { useEffect } from "react";
-
+import "./VideoGame.css"
 
 export default function Detail( props ){
     
@@ -17,9 +17,15 @@ export default function Detail( props ){
         platforms = game.platforms?.map(e=>{
             return [...e.platform.name + " "]
         })
-        genres = game.genres?.map(e=>{
-            return [...e.name + " "]
+        
+        genres = game.genres?.map((e , index )=>{
+            if (index === game.genres.length -1){
+                return[...e.name]
+            }else{
+                return [...e.name + " / "]
+            }
         })
+        
 
         useEffect(()=>{
             
@@ -27,32 +33,37 @@ export default function Detail( props ){
                 dispatch(detailsid(data))
             })
         }, [dispatch])
-        console.log(game)
         
         if (game !== [] || game !== undefined ){
             return(
-                <div>
+                <div className="total" >
                     {
                         
-                        <div>
-                            <h1>{game.name}</h1>
-        
-                            <img src={game.background_image} width="20%" height="50%"  />
-                            <div>
-                                <label>platforms: {platforms} </label>
+                        <div className= "box">
+                            <h1 className="name" >{game.name}</h1>
+                            <div className="contain" >
+                                <div>
+                                    <img className="image" src={game.background_image}   />
+                                </div>
+                                <div className="detail" >
+                                    <div className= "texts">
+                                        <label>platforms: {platforms} </label>
+                                    </div>
+                                    <div className= "texts">
+                                        <label>genres: {genres}</label>
+                                    </div>
+                                    <div className= "texts">
+                                        <label>release date: {game.releaseDate?game.releaseDate:game.released}</label>
+                                    </div>
+                                    <div className= "texts">
+                                        <label>rating: {game.rating}</label>
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <label>genres: {genres}</label>
-                            </div>
-                            <div>
+                            <div className= "texts">
                                 <label>description: {game.description_raw?game.description_raw:game.description}</label>
                             </div>
-                            <div>
-                                <label>release date: {game.releaseDate?game.releaseDate:game.released}</label>
-                            </div>
-                            <div>
-                                <label>rating: {game.rating}</label>
-                            </div>
+                            
                         </div>
         
                     }

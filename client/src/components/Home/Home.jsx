@@ -72,15 +72,19 @@ export default function Home(){
     return (
         <div>
             
-            <Link to = "/create">crear nuevo juego</Link>
+            <Link  to = "/create">
+                <button>
+                    crear nuevo juego
+                </button>
+                </Link>
             <div>
-                <select onChange={e=> handlerOrder(e)} name="orden" id="1">
+                <select className="options" onChange={e=> handlerOrder(e)} name="orden" id="1">
                     <option value="unorder">original</option>
                     <option value="asc">A - Z</option>
                     <option value="desc">Z - A</option>
                     <option value="rating">rating</option>
                 </select>
-                <select onChange={e => HandlerFilterByGenre(e)} name="genres" id="2">
+                <select className="options" onChange={e => HandlerFilterByGenre(e)} name="genres" id="2">
                     <option value="all">all genres</option>
                     {
                         allgenres.map(e=>{
@@ -88,7 +92,7 @@ export default function Home(){
                         })
                     }
                 </select>
-                <select onChange={e => handlerFilterByCreated(e)} name="creados" id="3">
+                <select className="options" onChange={e => handlerFilterByCreated(e)} name="creados" id="3">
                     <option value="all">todos</option>
                     <option value="created">creados</option>
                     <option value="api">existentes</option>

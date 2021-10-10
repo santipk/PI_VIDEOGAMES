@@ -1,0 +1,16 @@
+.welcome{
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 6px rgb(212, 175, 55); 
+}
+.video{
+    width: 100%;
+    
+}
+.todo{
+    
+    height: 900px;
+    background-image: url(https://c.tenor.com/mhEOwpHpI94AAAAC/gaming-gamer.gif);
+    background-size:    cover ;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
