@@ -1,0 +1,31 @@
+.pageBar{
+    display: flex;
+    justify-content: center;
+    
+}
+.lista{
+    border: solid rgba(50, 47, 255, 0.513);
+    box-shadow: 1px 1px 10px rgb(6, 44, 255);
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.item{
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px 6px rgb(212, 175, 55);
+    list-style: none;
+    text-decoration: none;
+}
+.item:hover{
+    color: rgb(2, 121, 27);
+    text-shadow: 2px 2px 6px rgb(1, 255, 1);
+    
+}
+.a{
+    width: 15px;
+    text-decoration: none;
+    cursor: pointer;
+}
