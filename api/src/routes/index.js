@@ -132,7 +132,9 @@ router.post("/videogame",async (req, res)=>{
         res.status(200).json(videoGame)
     }catch (e){
         console.log(e) 
-    } 
+        res.status(404)
+    }
+    
 })
 
 
