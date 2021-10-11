@@ -11,7 +11,7 @@ import getGenres from "../../actions/getGenres";
 import Searchbar from "../searchBar/SearchBar.jsx";
 
 export default function Home(){
-    const [orden, setOrden] = useState(``)
+    const [ setOrden] = useState(``)
     const dispatch = useDispatch()
     const allGames = useSelector ((state)=> state.games)
     const allgenres = useSelector ((state)=> state.genres)
@@ -88,7 +88,7 @@ export default function Home(){
                     <option value="all">all genres</option>
                     {
                         allgenres.map(e=>{
-                            return<option key = {e.id} value={e.name}>{e.name}</option>
+                            return<option key = {e.name} value={e.name}>{e.name}</option>
                         })
                     }
                 </select>
@@ -104,8 +104,8 @@ export default function Home(){
                     renderCards.map(e =>{
                         
                         return (
-                            <Fragment>
-                                <Link    className = "link" to = {"/home/" + e.id}>
+                            <Fragment key={e.id + "b"}>
+                                <Link key={e.id}    className = "link" to = {"/home/" + e.id}>
                                     <Card  key={e.id+1+"a"} name = {e.name} image = {e.background_image} genres = {e.genres} rating = {e.rating}  />
                                 </Link>
                             </Fragment>  

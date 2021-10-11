@@ -17,7 +17,7 @@ export default function paginado ({videogamesPerPage, allGames, pagina }){
                 {pagNum.map(e=>{
                     return(
                         <li className ="item" key = {e} >
-                            <a className= "a"  onClick={()=>pagina(e)}>{e}</a>
+                            <a  className= "a"  onClick={()=>pagina(e)}>{e}</a>
                         </li>
                     )
                 })}

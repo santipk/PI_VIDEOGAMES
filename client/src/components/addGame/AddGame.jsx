@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React  from "react";
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import getGenres from "../../actions/getGenres";
@@ -46,8 +46,8 @@ export default function VideogameCreate(){
             setInput({
                 ...input,
                 genresId: input.genresId.filter(p => {
-                    
-                    if (p!==e.target.value) return p
+                    if (p!==e.target.value) return  p
+                    return null;
                 })
             })
         }
@@ -72,6 +72,7 @@ export default function VideogameCreate(){
                 ...input,
                 platforms: input.platforms.filter(p=>{
                     if (p.platform.name !== e.target.value) return p
+                    return null;
                 }  )
             })
         }
@@ -136,9 +137,9 @@ export default function VideogameCreate(){
                         {
                         genres.map(e=>{
                             return(
-                                <div className="tag" >
+                                <div key={e.id}  className="tag" >
                                     <label>{e.name}:</label>
-                                    <input key={e.id} type="checkbox" name={e.name} value={e.id} onChange={e=>{handlecheck(e)}} />
+                                    <input  type="checkbox" name={e.name} value={e.id} onChange={e=>{handlecheck(e)}} />
                                 </div>
                             )})
                     }

@@ -1,4 +1,3 @@
-
 let inicialState = {
     games: [],
     genres: [],
@@ -33,8 +32,12 @@ function rootReducer (state = inicialState, action){
                         if(f.name === action.payload){
                             flag = true;
                         }
+                        return null
                     })
                     if (flag) return e
+                    else{
+                        return null
+                    }
                 })
             }
             return{
@@ -50,10 +53,12 @@ function rootReducer (state = inicialState, action){
             else if (action.payload === "created") {
                     filter = allthegames.filter(e =>{
                         if (e.created) return e
+                        return null
                     })
             }else if (action.payload === "api"){
                 filter = allthegames.filter(e=>{
                     if (!e.created) return e
+                    return null
                 }
                 )
             }
@@ -73,7 +78,7 @@ function rootReducer (state = inicialState, action){
                     if (a.name < b.name){
                         return -1;
                     }
-                    //return 0
+                    return 0
                 })
             }else if (action.payload === "desc"){
                 orderGames = all.sort( (a, b) =>{
@@ -83,7 +88,7 @@ function rootReducer (state = inicialState, action){
                     if (a.name > b.name){
                         return -1;
                     }
-                   // return 0
+                    return 0
                 })
             }else if (action.payload === "rating"){
                 orderGames = all.sort((a, b)=>{

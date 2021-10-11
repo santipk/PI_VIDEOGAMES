@@ -43,7 +43,7 @@ export default function Detail( props ){
                             <h1 className="name" >{game.name}</h1>
                             <div className="contain" >
                                 <div>
-                                    <img className="image" src={game.background_image}   />
+                                    <img className="image" src={game.background_image} alt={game.background_image}  />
                                 </div>
                                 <div className="detail" >
                                     <div className= "texts">
