@@ -32,7 +32,7 @@ export default function Detail( props ){
             details(props.match.params.id).then(data =>{
                 dispatch(detailsid(data))
             })
-        }, [dispatch])
+        }, [dispatch ,props.match.params.id])
         
         if (game !== [] || game !== undefined ){
             return(
