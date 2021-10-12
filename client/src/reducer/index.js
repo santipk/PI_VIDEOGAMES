@@ -72,20 +72,20 @@ function rootReducer (state = inicialState, action){
             if (action.payload === "unorder") orderGames = all
             else if (action.payload === "asc"){
                 orderGames = all.sort( (a, b) =>{
-                    if (a.name > b.name){
+                    if (a.name.toLowerCase() > b.name.toLowerCase()){
                         return 1;
                     }
-                    if (a.name < b.name){
+                    if (a.name.toLowerCase() < b.name.toLowerCase()){
                         return -1;
                     }
                     return 0
                 })
             }else if (action.payload === "desc"){
                 orderGames = all.sort( (a, b) =>{
-                    if (a.name < b.name){
+                    if (a.name.toLowerCase() < b.name.toLowerCase()){
                         return 1;
                     }
-                    if (a.name > b.name){
+                    if (a.name.toLowerCase() > b.name.toLowerCase()){
                         return -1;
                     }
                     return 0

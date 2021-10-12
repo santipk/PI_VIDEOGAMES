@@ -67,7 +67,7 @@ router.get("/videogames/search", async (req,res)=>{
     catch (e){
         console.log (e) 
     }
-    if (db ==! [] || db || db ==! undefined) games.data.results.push(...db)
+    if (db ==! [] || db || db ==! undefined) games.data.results.unshift(...db)
     res.status(200).json(games.data.results)
 })
 

@@ -11,7 +11,7 @@ import getGenres from "../../actions/getGenres";
 import Searchbar from "../searchBar/SearchBar.jsx";
 
 export default function Home(){
-    const [ setOrden] = useState(``)
+    const [orden, setOrden] = useState(``)
     const dispatch = useDispatch()
     const allGames = useSelector ((state)=> state.games)
     const allgenres = useSelector ((state)=> state.genres)
@@ -34,10 +34,10 @@ export default function Home(){
     useEffect( ()=>{
         getGames().then( data =>{
             dispatch(getVideogames(data))
-        })
+        });
         getGenres().then(data =>{
             dispatch(getGenresDB(data))
-        })
+        });
         
     }, [dispatch] )
 
@@ -63,7 +63,7 @@ export default function Home(){
             dispatch(order(e.target.value))
         }
         setPage(1)
-        setOrden(`ordenado ${e.target.value}`)
+        setOrden(`orden ${e.target.value}`)
     }
     
     
